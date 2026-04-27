@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
-import type { Library } from '@googlemaps/js-api-loader';
 import {
 	GoogleMap,
 	InfoWindow,
@@ -36,7 +35,7 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation, onLocationSelect }) => {
 	const mapRef = useRef<google.maps.Map | null>(null);
 	const prevClinicCount = useRef(0);
 
-	const libraries = useMemo<Library[]>(() => ['places'], []);
+	const libraries = useMemo(() => ['places'] as any, []);
 
 	const { isLoaded, loadError } = useJsApiLoader({
 		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
